@@ -8,23 +8,31 @@ import { BarComponent } from './bar/bar.component';
 import { CatComponent } from './cat/cat.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AppRoutingModule} from './app-routing.module';
+
 
 
 const appRoutes: Routes = [
   { path: 'foo', component: FooComponent },
   { path: 'bar', component: BarComponent },
-  { path: 'cat', component: CatComponent },
+  { path: 'cat/:id', component: CatComponent },
+  { path: '',   redirectTo: '/foo', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
  
   imports: [
+    AppRoutingModule,
     BrowserModule,
+    RouterModule.forChild(appRoutes),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
+  ],
+  exports: [
+    RouterModule
   ],
   declarations: [
     AppComponent,

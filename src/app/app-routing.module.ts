@@ -9,13 +9,24 @@ const routes: Routes = [
   {path: 'foo',
   component: FooComponent},
   {path: 'bar',
-  component: BarComponent},
+  component: BarComponent}
+  ,
   {path: 'cat',
+  component: CatComponent},
+
+  {path: 'cat/:id',
   component: CatComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+ imports: [
+   RouterModule.forChild(routes)
+   //RouterModule.forRoot(
+    //routes,
+   // { enableTracing: true } // <-- debugging purposes only
+  //)
+  ],
+
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

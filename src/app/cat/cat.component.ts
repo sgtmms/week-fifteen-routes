@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-//import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,18 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatComponent implements OnInit {
 
-  constructor()
-   // private activatedRoute: ActivatedRoute)
+  constructor(
+   private activatedRoute: ActivatedRoute)
 {
 
     console.log("routes");
     //console.log(activatedRoute.snapshot.url); // array of states
-    //console.log(activatedRoute.snapshot.url[1].path.toString); 
+    console.log(activatedRoute.snapshot.url[1].path.toString); 
 }
 
   ngOnInit() {
+
+    console.log("routes");
+    this.output();
   }
 
- 
+ output = () =>{
+
+    let param = this.activatedRoute.snapshot.url[0].path.toString().split('/')[1];
+    
+    console.log("param\n" + param); 
+
+
+ }
 
 }
