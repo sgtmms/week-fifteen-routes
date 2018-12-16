@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CatComponent implements OnInit {
 
   constructor(
-   private activatedRoute: ActivatedRoute)
+   private activatedRoute: ActivatedRoute,
+   )
 {
 
     console.log("routes");
@@ -26,11 +27,16 @@ export class CatComponent implements OnInit {
 
  output = () =>{
 
-    let param = this.activatedRoute.snapshot.url[0].path.toString().split('/')[1];
+    let param = this.activatedRoute.snapshot.url[1].path.toString();
     
     console.log("param\n" + param); 
 
-
+  return param;
  }
 
+ get catName (){
+
+   return this.output();
+
+}
 }
